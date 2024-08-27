@@ -1,0 +1,22 @@
+{
+"name": "Cozmato",
+"short_name": "Cozmato",
+"start_url": "/",
+"theme_color": "#000000",
+"display": "standalone",
+"orientation": "portrait",
+"background_color": "#fff",
+"description": "this is a wounderful app for business",
+"icons": [
+{
+"src": "logo/logo.png",
+"sizes": "1280x1280",
+"type": "image/png"
+},
+{
+"src": "logo/logo.png",
+"sizes": "154x154",
+"type": "image/png"
+}
+]
+}

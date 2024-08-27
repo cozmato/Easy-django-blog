@@ -1,0 +1,23 @@
+{
+"name": "Cozmato",
+"description": "cozmato is a wounderful app for business",
+"background_color": "#fff",
+"theme_color": "purple",
+"start_url": "/",
+"display": "standalone",
+"orientation": "portrait",
+"icons": [
+{
+"src": "logo/logo.png",
+"sizes": "1280x1280",
+"type": "image/png"
+},
+{
+"src": "logo/logo.png",
+"sizes": "154x154",
+"type": "image/png"
+}
+],
+"dir": 'ltr',
+"lang": 'en-US',
+}

@@ -1,0 +1,145 @@
+.shimg{
+    width: 50px;
+    height: 50px;
+    border-radius: 2em;
+}
+.aff{
+    float: right;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+.poimg{
+    width: 100%;
+    height: 280px;
+    max-height: 350px;
+}
+.pode{
+    text-font: bold;
+}
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        text-decoration: none;
+        color: white;
+    }
+
+a, form, small, i, h1, h2, h3, h5, h4, h6{
+    color: white;
+}
+    .ro{
+        display: grid;
+        grid-template-columns: 70% 30%;
+        gap: 14px;
+    }
+    .co{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-gap: 5px;
+        padding: 3px;
+    }
+    .right-bar{
+        height: 70vh;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color: white;
+    }
+    .itlo{
+        display: flex;
+        flex-wrap: auto;
+    }
+    .dd{
+        border-left: 1px grey solid;
+        height: 50vh;
+        width: 100%;
+        position: fixed;
+        flex-wrap: auto;
+        z-index: 200;
+        top: 100px;
+        bottom: 10px;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+    .img{
+        padding-right: 4px;
+    }
+    .bio{
+        margin: 10px 0px 0px 3px;
+    }
+    .al{
+        text-decoration: none;
+        color: black;
+    }
+    .al:hover{
+        text-decoration: none;
+        color: black;
+    }
+    .movi{
+    display: none;
+    }
+
+    @media(max-width: 600px){
+    .ro{
+        display: grid;
+        grid-template-columns: 100%;
+        margin: 0px;
+        width: 100%;
+    }
+
+    .co{
+        display: grid;
+        grid-template-columns: 100%;
+        margin: 0px;
+    background-color: rgb(40,40,40);
+    color: rgb(249,249,249);
+    }
+
+    .container-fluid{
+    margin: 0px;
+    padding: 0px;
+    }
+    body{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+    background-color: rgb(40,40,40);
+    color: rgb(249,249,249);
+    }
+
+    .movi{
+    display: flex;
+    gap: 10px;
+    margin: 5px;
+    justify-content: center;
+    }
+    .p{
+        border-radius: 50px;
+    }
+    #po{
+        display: none;
+        }
+    .right-bar{
+        display: none;
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border: 0px;
+    }
+    .itlo{
+        display: flex;
+        flex-wrap: auto;
+    }
+    .dd{
+    margin: 10px;
+        font-weight: bold;
+        border: 0;
+        position: static;
+        flex-wrap: auto;
+        z-index: 0;
+        overflow-y: auto;
+    }
+    }

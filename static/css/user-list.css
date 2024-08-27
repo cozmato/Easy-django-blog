@@ -1,0 +1,56 @@
+.mu{
+    margin-left: 20%; float: right;
+}
+.ui{
+    display: flex;
+}
+.uimg{
+    width: 47px; height: 47px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;
+}
+
+.bag{
+    background-color: red;
+    color: white;
+    border-radius: 2em;
+    width: 1em;
+    height: 1em;
+    max-width: 4em;
+    padding: 3px;
+    text-align: center;
+    position: relative;
+}
+.card{
+    border: 0px;
+    padding-bottom: 8px;
+}
+.spa{
+    background-color: #ee82ee;
+    border-radius: 1em;
+    width: .8em;
+    height: .8em;
+    position: absolute;
+    padding-right: -50px;
+    margin: -30px -30px 0px 43px;
+    border: 2px solid #eee;
+}
+
+@media (max-width: 559px){
+
+    .card{
+        overflow-x: hidden;
+        width: 100%;
+        border: 0px;
+    }
+    .col-md-8{
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+
+    }
+    .row{
+        overflow-x: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+}

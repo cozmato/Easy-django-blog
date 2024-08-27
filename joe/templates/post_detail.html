@@ -1,0 +1,413 @@
+ {% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% load compress %}
+
+
+{% block head %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{% url 'post-detail' pk=post.pk name=post.name|urlpl %}"
+  },
+  "headline": "{% autoescape off %} {{ post.name | unes_ht }} {% endautoescape %}",
+  "description": "{% autoescape off %} {{ post.description | truncatechars:150 | es_ht }} {% endautoescape %}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.kemisto.com{{ post.file.url }}",
+    "width": "300",
+    "height": "300"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": ""
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.kemisto.com{% static 'logo/logo.png' %}",
+      "width": "300",
+      "height": "300"
+    }
+  },
+  "datePublished": "{{ post.date }}"
+}
+
+{% endblock %}
+ 
+
+{% block content %}
+{% load social_share %}
+
+<body>
+
+
+
+{% compress css inline %}
+<style>
+
+
+.roro{
+    display: flex; justify-content: space-evenly;
+}
+.coc{
+    float: left; margin-right: 20px;
+}
+.coco{
+    float:right; margin-left: 20px;
+}
+.podimg{
+    width: 100%; height: 250;
+}
+
+
+
+#link-text{
+    color: #ee88ff;
+}
+
+
+.ron{
+padding: 8px;
+border-radius: 100%;
+float: right;
+margin: 1px;
+}
+ 
+.co{
+border-radius: 70px;
+background-color: #ffffff;
+color: rgb(40,40,40);
+}
+
+
+
+.rond{
+padding: 10px;
+border-radius: 70px;
+float: right;
+width: 90px;
+height: 40px;
+margin: 1px;
+}
+
+
+
+.aff{
+    color: #FF00FF;
+}
+
+.aff-link{
+    overflow-wrap: break-word; display:inline-block; width: 80%; color: #ee88ff;
+}
+
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+body h1 {
+  text-align: center;
+}
+
+
+.tooltiptext {
+  display: none;
+  width: 140px;
+  background-color: #ba67c8;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  position: relative;
+  padding: 5px;
+}
+
+
+.cr{
+     display: flex; justify-content: center; flex-wrap: wrap;
+}
+
+
+.podimg{
+    width: 100%;
+    height: 350px;
+}
+
+.ads{
+    padding: 10px;
+    position: sticky;
+    top: 80px;
+    bottom: 20px;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    overflow-y: auto;
+
+}
+
+
+@media(max-width: 600px){
+
+.container-fluid{
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.lft{
+    display: none;
+}
+
+.col-sm-6{
+    overflow-x: hidden;
+}
+.col-sm-3{
+    
+}
+body,html{
+margin: 0;
+overflow-x: hidden;
+width: 100%;
+}
+
+.cr{
+     display: flex; flex-wrap: wrap;
+}
+
+.r{
+     display: grid;
+     grid-template-columns: 50% 50%;
+     gap: 5px;
+}
+
+}
+
+
+</style>
+{% endcompress %}
+
+
+<div class="container-fluid mt-3"> 
+   
+    <div class="row">
+        
+    <div class="col-sm-2 lft"></div>
+        
+        <div class="col-sm-7 col-12" style="margin-top: 1em;">
+        
+           <h1 class="m-1 ta-l" style="float: left;">{{ post.name }}</h1> 
+
+                <div class="card-img pt-5">
+                    <a rel="nofollow" href="{{img.file.url}}">
+                        <img alt="{{ post.name }}" class="card-img img-fluid w-100 d-block podimg" src="{{ post.file.url }}" style="width: 100%; height: auto; max-height: 480px;">
+                    </a>
+                </div>
+
+            
+                <div class="card-body" style="">
+
+
+                    <span class="card-text mt-2" style="overflow-wrap: break-word; display:inline-block; width: 100%; font-size: 18px; line-height:28px;">
+                       
+                        {% autoescape off %}
+                        {{ post.content | filus }}
+                         {% endautoescape %}
+                         </span>
+                         
+                         
+                         
+                         <br>
+                         <p></p>
+                         {% if post.Affiliate_link %}
+                       <p class="mt-2" style="">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="30" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                              <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                              <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                            </svg>
+                            <a href="{{ post.Affiliate_link }}" class="aff-link">{{ post.Affiliate_link }}</a></p>
+                        {% endif %}
+                        </p>
+                        <br>
+                        <p>Posted: {{ post.date }} </p> 
+                        <p> </p>
+                        
+                        
+                        
+                                      <div class="d-flex" style="justify-content: right; margin-right: 10px;">
+                    <i style="position: absolute;" class="tooltiptext">Copied</i>
+                </div>
+                
+                <div class="ro roro ta-c mb-2 " style="">
+
+
+                        <div class="co coco rond ta-c" style="">
+                            {% if total_views == 0 %}0
+                            {% else %}
+                            <div class="d-flex">
+                            <span class="mr-2">
+                           {{ total_views|conv }}
+                            </span>
+                                <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                                 class="bi bi-eye-fill" viewBox="0 0 16 16">
+                              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            </span>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    
+                
+                        <div class="co coco rond share ta-c" id="share" style="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                      <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                    </svg>
+
+                    </div>
+                </div>
+                    <div class="share-bod " id="share-bod" style="display: none;">
+                        <div class="ron mr-2">{% post_to_facebook object_or_url "facebook" %}</div>
+                        <div class="ron mr-2">{% post_to_twitter object_or_url "" %}</div>
+                        <div class="ron mr-2">{% post_to_whatsapp object_or_url "WhatsApp" %}</div>
+                        <div class="ron mr-2">{% post_to_telegram object_or_url "telegram" %}</div>
+                        <div class="ron mr-2">{% post_to_reddit object_or_url "reddit" %}</div>
+                        
+                        <span id="btnCopy" class="liro mt-2">
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="cop bi bi-link-45deg" viewBox="0 0 16 16">
+                              <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                              <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                            </svg> </span>
+                            
+                              </div>
+                              <p id="secretInfo" style="display: none;">{{ request.build_absolute_uri }}</p>
+
+                        
+                        
+
+                    </div>
+                    
+                    <span class=""></span>
+                    
+
+            
+            <div></div>
+
+        </div>
+           
+         <div class="col-sm-3 col-12">
+         
+         <h2 class="ta-l mt-3 mb-3 border-bottom"> Related posts </h2>
+         
+            <div class="r">
+                    {% for s in similar %}
+                        <div class="mb-3" style="border-radius: 10px;">
+                            <a href="{% url 'post-detail' pk=s.pk name=s.name|unes_ht|slugify %}" rel"dofollow" class="">
+                              <div class="card rounded shadow-sm border-1"  style="width: 200px; height: auto; border-radius: 10px;">
+                                <img src="{{ s.file.url }}" alt="{{ s.name }}" class="img-fluid d-block mb-1 " loading="lazy" style="width: 200px; height: 150px;">
+                                <span class="p-1">
+                                  <h6> {{ s.name | unes_ht }} </h6>
+                                </span>
+                              </div>
+                            </a>
+                        </div>
+                    
+                    {% endfor %}
+            </div>
+            
+             
+         </div>
+         
+         
+    </div>
+    
+</div>
+
+
+
+
+ {% compress js inline %}
+<script>
+
+
+var s = document.getElementById('share')
+var sb = document.getElementById('share-bod')
+
+s.addEventListener('click', () => {
+if ( sb.style.display === 'none' ){
+    sb.style.display = 'grid'
+    sb.style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr'
+    sb.style.padding = '6px'
+}
+else{
+sb.style.display = 'none'
+}
+})
+
+document.addEventListener('click', (event) => {
+  if (!s.contains(event.target)) {
+    sb.style.display = 'none'
+  }
+});
+
+
+
+
+      var $body = document.getElementsByTagName('body')[0];
+      var $btnCopy = document.getElementById('btnCopy');
+      var secretInfo = document.getElementById('secretInfo').innerHTML;
+
+      var copyToClipboard = function(secretInfo) {
+        var $tempInput = document.createElement('INPUT');
+        $body.appendChild($tempInput);
+        $tempInput.setAttribute('value', secretInfo)
+        $tempInput.select();
+        document.execCommand('copy');
+        $body.removeChild($tempInput);
+      }
+
+      $btnCopy.addEventListener('click', function(ev) {
+        copyToClipboard(secretInfo);
+        $('.tooltiptext').fadeIn()
+        //$('.cop').hide()
+        setTimeout(() => {
+        $('.tooltiptext').fadeOut()
+        }, 3000)
+         setTimeout(() => {
+        //$('.cop').show()
+        }, 3500)
+        });
+</script>
+ {% endcompress %}
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% load static %}
+{% load tags %}
+
+  <div class="col-md-8">
+{% if se %}
+<div class="row">
+{% for se in se %}
+<div class="col-md-4">
+<div class="card mb-3" >
+
+     <a href="{% url 'post-detail' pk=se.pk name=se.name|urlpl %}"
+                       style="text-decoration: none;">
+         <div class="carousel-inner" role="listbox">
+
+               <img class="img-fluid imm" loading="lazy" src="{{ se.file.url }}" style="">
+
+
+            </div>
+
+<h6>{{ se.name }}</h6>
+     </a>
+     </div>
+     </div>
+{% endfor %}
+</div>
+{% endif %}
+    {% if ca %}
+<div class="row">
+    {% for c in ca %}
+    <div class="col-md-4">
+    <div class="card mb-3" >
+<a href="category/{{ c.name }}" style="" class="">
+            <img class="img-fluid imm" loading="lazy" src="{{ c.image.url }}" style="">
+
+<h6>{{ c.name }}</h6>
+</a>
+</div>
+</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+    {% if se == '' and ca == '' %}
+    <h4>No search {{ query }} was found</h4>
+{% endif %}
+  </div>

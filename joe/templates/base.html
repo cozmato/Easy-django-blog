@@ -1,0 +1,930 @@
+<html lang="en">
+{% load static %}
+{% load tags %}
+{% load humanize %}
+{% load compress %}
+
+
+<head>
+
+<meta name="ezoic-site-verification" content="OV7wrn7J1gCnh0TzHimxzaC0ZnE4xq" />
+    <meta name="msvalidate.01" content="A9FDB4500260B571FB6E84D9BD91B0FF" />
+    
+    <meta name="p:domain_verify" content="2f90967e640c971a10006d45421a7503"/>
+
+    <meta name="google-site-verification" content="Jm3ARLNuqbJleFVV6xXGfLiukLGdBQ_CV_x3rNGD-e0" />
+    
+    <!--<link rel="manifest" href="manifest.json" >--> 
+     <link rel="manifest" href="{% static 'manifest.webmanifest' %}" crossorigin="use-credentials" />
+     
+     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2042444972574773"
+         crossorigin="anonymous"></script>
+
+   
+    <link rel="shortcut icon" type="image/png" href="/media/logo/logo.jpg">
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes, user-scalable=no"> 
+    <meta content="true" name="HandheldFriendly">
+    <meta content="width" name="MobileOptimized">
+    
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="purple">
+    <meta name="msapplication-TileImage" content="{% static 'logo/logo.jpg' %}">
+    <meta name="msapplication-TilelColor" content="purple">
+    <meta name="apple-mobile-web-app-status-bar-style" content="purple">
+    <meta name="apple-mobile-web-app-title" content=kemisto">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="96x96" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="128x128" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="144x144" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="152x152" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="192x192" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="384x384" >
+    <link rel="apple-touch-icon" href="{% static 'logo/logo.jpg' %}" sizes="512x512" >
+    
+     
+    {% if request.resolver_match.view_name == 'home' %} 
+    <title>Kemisto | Home</title>
+
+    {% elif request.resolver_match.view_name == 'post-detail' %}
+    <title>{{ post.name|title }}</title>
+
+    {% else %}
+    <title>Kemisto | {{ request.path|urlpl }} </title>
+        
+    {% endif %}  
+    
+    <link rel="canonical" href="{{ request.path }}"/>
+    <link rel="alternate" type="application/rss+xml" title="Kemisto" href="https://kemisto.com" />
+    <link rel="home" href="{% url 'home' %}"/>
+    
+        <meta name="author" content="Kemisto">
+        {% if request.resolver_match.view_name == 'category' %}
+        <meta property="image" content="{{ cat.image.url }}">
+        {% elif request.resolver_match.view_name == 'post-detail' %}
+            <meta property="image" content="https://www.kemisto.com{{ post.file.url }}">
+        {% else %}
+        <meta property="image" content="{% static 'logo/logo.jpg' %}">
+        {% endif %}
+    
+    
+    {% if request.resolver_match.view_name == 'post-detail' %}
+
+       <meta name="description" property="description" content="{{ post.meta_description }}">
+        {% elif request.resolver_match.view_name == 'category' %}
+        <meta name="description" property="description" content="{{ cat|title }} ">
+        {% else %}
+        <meta name="description" property="description" content="kemisto.com helps to teach you everything you need to know about blogging and mistakes to avoid when blogging">
+        {% endif %}
+
+
+    <meta name="keywords" content="blog, online content, blog content creation, what are the">
+    
+    
+            {% if request.resolver_match.view_name == 'category' %}
+        <meta property="og:image" content="{{ cat.image.url }}">
+        {% elif request.resolver_match.view_name == 'post-detail' %}
+            <meta property="og:image" content="https://www.Kemisto.com{{ post.file.url }}">
+        {% else %}
+        <meta property="og:image" content="{% static 'logo/logo.jpg' %}">
+        {% endif %}
+    
+    
+    <meta property="og:url" content="https://www.kemisto.com/" >
+    
+        {% if request.resolver_match.view_name == 'post-detail' %}
+        <meta property="og:title" content="{{ post.name }}">
+        {% elif request.resolver_match.view_name == 'category' %}
+        <meta property="og:title" content="{{ cat|title }}">
+        {% else %}
+        <meta property="og:title" content="Free blog content">
+        {% endif %}
+
+    <meta property="og:image:alt" content="Kemisto" >
+    <meta property="og:type" content="article" />
+    {% if request.resolver_match.view_name == 'post-detail' %}
+     <meta property="og:description" content="{{ post.meta_description }} " >
+    {% elif request.resolver_match.view_name == 'category' %}
+        <meta property="og:description" content=" {{ cat|title }} ">
+    {% else %}
+    <meta property="og:description" content="kemisto.com helps to teach you everything you need to know about blogging and mistakes to avoid when blogging">
+    {% endif %}
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="Kemisto">
+    <meta name="twitter:creator" content="Kemisto">
+        {% if request.resolver_match.view_name == 'category' %}
+        <meta name="twitter:image" content="{{ cat.image.url }}">
+        {% elif request.resolver_match.view_name == 'post-detail' %}
+            <meta name="twitter:image" content="https://www.kemisto.com{{ post.file.url }}">
+        {% else %}
+        <meta name="twitter:image" content="{% static 'logo/logo.jpg' %}">
+        {% endif %}
+        
+    <meta property="twitter:image:alt" content="Kemisto image" >
+    <meta name="twitter:site" content="www.kemisto.com" >
+         
+        {% if request.resolver_match.view_name == 'post-detail' %}
+                <meta name="twitter:title" content="{{ post.name }}" />
+                 <meta name="twitter:description" content=" {{ post.meta_description }}" >
+        {% elif request.resolver_match.view_name == 'category' %}
+        <meta name="twitter:title" content="{{ cat | slice:":140" }}" />
+         <meta name="twitter:description" content=" {{ cat | slice:":140" }} " >
+        {% else %}
+            <meta name="twitter:title" content="Kemisto" />
+            <meta name="twitter:description" content="kemisto.com helps to teach you everything you need to know about blogging and mistakes to avoid when blogging" >
+    
+        {% endif %}
+
+
+      
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RC6E5T3C90"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RC6E5T3C90');
+</script>
+
+
+<script type='application/ld+json'> 
+{
+  "@context": "https://schema.org", 
+  "@type": "Organization",
+  "name": "Kemisto",
+  "url": "https://www.kemisto.com",
+  "logo": "https://www.kemisto.com/staticfiles/logo.jpg",
+  "alternateName": "Kemisto"
+} 
+</script>
+
+
+{% block head %}
+
+ 
+{% endblock %}
+
+</head>
+
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+{% compress css inline %}
+<style>
+
+ h1 { font-size: 150%; font-weight: bold;}
+ h2 { font-size: 120%; font-weight: bold;}
+ h3 { font-size: 100%; font-weight: bold;}
+ h4 { font-size: 80%; font-weight: bold;}
+ 
+ .brand { font-size: 150%; font-weight: bold;}
+ .ta-c{text-align: center;}
+   
+    
+ul{
+list-style: none;
+}
+*{
+	text-decoration: none;
+	box-sizing: border-box;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+    .body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font: 15px;
+    margin-top: 5em; 
+    background-color: #ffffff;
+    color: rgb(40,40,40);
+}
+
+
+
+
+    a:hover{
+        text-decoration: none;
+        color: rgb(40,40,40);
+ }
+
+    a{
+        text-decoration: none;
+     }
+    .header a{
+        display: flex;
+         float: left;
+         margin: 0 auto;
+         padding: 8px 8px;
+         font-size:14px;
+         text-align: center;
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249, 0.7){% else %}rgba(50,50,50, 0.7){% endif %}{% else %}rgba(50,50,50, 0.7){% endif %};
+    }
+       .header form{
+        display: flex;
+         text-decoration: none;
+         float: left;
+         color: white;
+         font-size:14px;
+         text-align: center;
+         padding-left: ;
+         padding: 8px 8px 0px 10%;
+    }
+    .header{
+         position: -webkit-fixed;
+        position: fixed;
+        overflow: hidden;
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        margin-bottom: 10em;
+        box-shadow: 0 -2px 5px -2px #333;
+        
+    }
+
+    		.type_msg{
+			border-right: 1px !important;
+			border-left: 1px !important;
+			border-top: 1px !important;
+			border-radius: 5em;
+			height: 40px;
+			overflow-x: auto;
+		    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %} !important;
+            color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}white{% else %}black{% endif %}{% else %}black{% endif %} !important;
+        
+		}
+			.type_msg:focus{
+			border-right: 1px !important;
+			border-left: 1px !important;
+		     box-shadow:none !important;
+           outline:0px !important;
+           		    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %} !important;
+           color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}white{% else %}black{% endif %}{% else %}black{% endif %} !important;
+		}
+
+		.send_btn{
+			cursor: pointer;
+			height: 40px;
+			background: #BA55D3; color: white;
+		}
+		
+     .cu{
+         cursor: pointer;
+     }
+     #send{
+         display: none;
+     }
+     .bo{
+        color: #BA55D3;
+     }
+
+ 
+
+.un{
+ color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}#8898A5{% else %}#536471{% endif %}{% else %}#536471{% endif %};
+}
+
+
+.list {
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  overflow: auto;
+  font-size: 18px;
+      background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}#ffffff{% else %}black{% endif %}{% else %}black{% endif %};
+    
+}
+
+.list:hover {
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  overflow: auto;
+      background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(50,50,50){% else %}#ddd{% endif %}{% else %}#ddd{% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}#ffffff{% else %}black{% endif %}{% else %}black{% endif %};
+    
+}
+
+.se-fi{
+position: fixed;
+z-index: 100;
+border-radius: 0 0 1em 1em;
+border: 2px gray solid;
+padding: 10px;
+height: 50%;
+width: 50%;
+top: 11%;
+ overflow: auto;
+ float: left;
+ display: none;
+     background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}#ffffff{% else %}black{% endif %}{% else %}black{% endif %};
+    
+}
+
+
+#preloader{
+height: 100vh;
+width: 100%;
+position: fixed;
+left: 0;
+top: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 900;
+background: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %};
+}
+#preloader::after{
+content: "";
+width: 60px;
+height: 60px;
+border: 5px solid #ee88ff;
+border-top-color: purple;
+border-radius: 100%;
+animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading{
+   from {transform: rotate(0turn)}
+   to {transform: rotate(1turn)}
+}
+
+.bbip{
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#se{
+        display: flex;
+         text-decoration: none;
+         justify-content: space-evenly;
+}
+
+.logo{
+margin-top: 1px; width: 40px; height: 40px; border-radius: 100%;
+}
+
+.slo{
+    display: none;
+}
+
+
+  table {
+    background-color: #ffffff;
+    font-size: 16px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+    margin: 15px;
+    {
+      
+
+      th, 
+      td {
+        text-align: left;
+        padding: 15px;
+        box-sizing: border-box;
+      }
+      
+      th {
+        color: #8f8f8f;
+        font-weight: normal;
+        background-color: #ffffff;
+        border-bottom: solid 2px #d8d8d8;
+        position: sticky;
+        top: 0;
+        border: 1px solid black;
+      }
+      
+      td {
+        border: solid 1px #d8d8d8;
+        border-left: 0;
+        border-right: 0;
+        white-space: nowrap;
+        border: 1px solid black;
+      }
+
+tr, tbody {
+  border: 1px solid black;
+}
+    
+em {
+  background: #aaa;
+  border-left: 10px solid #fff;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+em:before {
+  color: #aaa;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+ @media (max-width: 690px){
+     
+.logo{
+display: none;
+}
+
+.slo{
+    display: block;
+} 
+ 
+#se{
+    display: block;
+     text-decoration: none;
+}
+ 
+ .bbip{
+    font-size: 11px;
+    padding: 0px;
+    margin: 0px;
+}
+
+ 
+ 
+ .se-fi{
+position: fixed;
+z-index: 100;
+padding: 10px;
+border-radius: 0 0 1em 1em;
+border: 2px gray solid;
+height: auto;
+max-height: 90%;
+width: 100%;
+top: 8%;
+ overflow: auto;
+ float: left;
+ display: none;
+     background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(50,50,50){% else %}rgb(240,240,240){% endif %}{% else %}rgb(240,240,240){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}#ffffff{% else %}black{% endif %}{% else %}black{% endif %};
+    
+}
+    
+     
+ .bdy{
+     margin-bottom: 4em;
+     margin-top: 3.5em;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font: 16px;
+    background-color: }#ffffff;
+    color: rgb(40,40,40);
+}
+
+
+
+        .type_msg{
+			border:0;
+			border-radius: 5em;
+			height: 30px;
+			overflow-x: auto;
+			border: 1px 0 1px 0 solid purple;
+    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+	}
+			.type_msg:focus{
+			 border-bottom: 2px solid purple;
+		     box-shadow:none !important;
+           outline: 0 !important;
+    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+	}
+
+	.attach_btn{
+	    margin: 1px 10px 17px 10px; 
+	    width: 40px; 
+        height: 40px; 
+        border-radius: 100%;
+	} 
+	 
+    .send_btn{
+        height: 30px;
+    	cursor: pointer;
+    	height: 40px;
+    	background: #BA55D3; color: white;
+    }
+
+
+		.send_btn:focus{
+           border-bottom: 1px purple solid;
+    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+	}
+
+    .head{
+        position: -webkit-fixed;
+        position: fixed;
+        overflow: hidden;
+        overflow-x: auto;
+        background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+        color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+        width: 100%;
+        height: 60px;
+        bottom: 0;
+        left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 -2px 5px -2px #333;
+    }
+
+    .head a{
+         font-size:14px;
+         text-align: center;
+        color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249, 0.7){% else %}rgba(50,50,50, 0.7){% endif %}{% else %}rgba(50,50,50, 0.7){% endif %};
+}
+
+    .head form{
+        width: 100%;
+        display: flex;
+         text-decoration: none;
+         margin: 0 auto;
+         padding: 5px;
+         font-size:14px;
+         text-align: center;
+        color: grey;
+    }
+    
+
+    #mmm{
+        display: flex;
+         justify-content: space-around;
+         padding: 5px 5px 20px 5px;
+    }
+
+    .bi{
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+
+    }
+
+
+
+
+    .searc{
+        display: grid;
+        {% if user.is_authenticated %}
+        grid-template-columns: 90% 10%;
+        {% else %}
+        grid-template-columns: 100%;
+        {% endif %}
+        gap: 8px;
+         position: -webkit-fixed;
+        position: fixed;
+        border-bottom: 1px solid grey;
+        background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+        color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgba(249,249,249, 0.5){% else %}rgba(40,40,40,0.5){% endif %}{% else %}rgb(40,40,40){% endif %};
+        width: 100%;
+        height: 55px;
+        padding: 9px;
+        top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 0 -2px 5px -2px #333;
+    }
+
+</style>
+{% endcompress %}
+
+<style>
+
+
+.footer {
+  background-color: black;
+  color: #fefefe;
+  position: static;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 1.5rem;
+}
+
+.footer .heading {
+  color: #fefefe;
+  max-width: 1010px;
+  width: 90%;
+  text-transform: uppercase;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.footer .content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer .content p {
+  margin-bottom: 1.3rem;
+}
+
+.footer .content a {
+  text-decoration: none;
+  color: #fefefe;
+}
+
+.footer .content a:hover {
+  border-bottom: 1px solid #971717;
+}
+
+.footer .content h4 {
+  margin-bottom: 1.3rem;
+  font-size: 19px;
+}
+
+footer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+footer hr {
+  margin: 2rem 0;
+}
+
+@media (max-width: 767px) {
+  .footer .content {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    font-size: 14px;
+  }
+
+  .footer {
+    position: unset;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer .content,
+  .footer {
+    font-size: 14px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .footer {
+    position: unset;
+  }
+}
+
+</style>
+    <div id="preloader"></div>
+<body style="" class="body" id="body">
+
+
+<div class="header " id="he" >
+<div class="search" id="se">
+
+   
+    <div class="hpf mt-2" id="hpf">
+        <a href="{% url 'home' %}"><span style="color: #fff;" class="brand">Kemisto</span></a>
+    </div>
+
+    <div>
+
+       <form class="hpf" id="hpf" autocomplete="off" action="/search" method="GET" >
+        <div class="input-group" id="ingo">
+
+        <input class="form-control input" type="search" placeholder="Search" aria-label="Search" autocomplete="off"
+               name="q" id="seacrh-header-input">
+
+           <div class="input-group-append" id="">
+              <span class="input-group-text send_btn" >
+                <label for="send" style="">
+                    <span class="pt-2 cu"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg></span>
+                </label>
+            <input class="pt-2 mt-2" id="send" type="submit">
+                </span>
+           </div>
+
+        </div>
+        <div class="se-fi hds"></div>
+                    
+    </form>
+   </div>
+
+
+<div class="aaa" id="mmm">
+ 
+    <a class="" href="/" >
+        <span style="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#fff" class="bo bi-house-door-fill" viewBox="0 0 16 16">
+    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+    </svg>
+    <p  class="bo bbip text-white" >Home</p>
+    </span></a>
+
+</div>
+</div>
+</div>
+  
+
+
+{% block content %}
+
+
+ 
+{% endblock %}
+
+<div class="footer">
+      <div class="heading">
+        <h2>Kemisto<sup>™</sup></h2>
+      </div>
+      <div class="content">
+
+        <div class="social-media">
+          <h4>Social</h4>
+          <p>
+            <a href="https://www.linkedin.com/in/joseph-abu-442085205"
+              ><i class="fab fa-linkedin"></i> Linkedin</a
+            >
+          </p>
+          <p>
+            <a href="https://twitter.com/JosephA17495328"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+          </p>
+          <p>
+            <a href="https://github.com/cozmato"
+              ><i class="fab fa-github"></i> Github</a
+            >
+          </p>
+          <p>
+            <a href="https://www.facebook.com/josephabu"
+              ><i class="fab fa-facebook"></i> Facebook</a
+            >
+          </p>
+          <p>
+            <a href="https://www.instagram.com/cozmato"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+          </p>
+	<p>
+	<a href="https://www.quora.com/profile/Joseph-Abu-22">
+	<i class="fab fa-quora"></i> Quora</a>
+	</p>
+
+	<p>
+	<a href="https://www.pinterest.com/kinmunto/">
+	<i class="fab fa-pinterest"></i> Pinterest</a>
+	</p>
+
+
+        </div>
+        <div class="links">
+          <h4>Quick links</h4>
+          <p><a href="{% url 'home' %}">Home</a></p>
+          <p><a href="{% url 'about' %}">About Us</a></p>
+          <p><a href="{% url 'contact_us' %}">Contact Us</a></p>
+          <p><a href="{% url 'privacy_policy' %}">Privacy policy</a></p>
+          <p><a href="{% url 'terms_condition' %}">Terms & Condition</a></p>
+          <p><a href="{% url 'disclaimer' %}">Disclaimer</a></p>
+          <p><a href="{% url 'gdpr-policy' %}">GDPR Policy</a></p>
+        </div> 
+        <div class="details">
+          <h4 class="address">Address</h4>
+          <p>
+            28 musa yakubu streets, kawo, kaduna 
+          </p>
+          <h4 class="mobil+2347012775182</a></p>
+          <h4 class="mail">Email</h4>
+          <p><a href="mailto:kemisto@kemisto.com">kemisto@kemisto.com</a></p>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        © 2022 kemisto.com
+      </footer>
+    </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+
+<script src="{% static 'js/auto-complete.min.js' %}"></script>
+
+
+{% compress js inline %}
+<script defer>
+
+
+var lazyLoadInstance = new LazyLoad({
+  // Your custom settings go here
+});
+
+if ('serviceWorker' in navigator) {
+
+  navigator.serviceWorker.register('{% static 'sw.js' %}')
+  .then(function(swReg) {
+  })
+  .catch(function(error) {
+    console.error('Service Worker Error', error);
+  });
+}
+
+
+
+    $(document).ready(function(){
+var q = document.querySelector(".input")
+q.addEventListener('input', (c) => {
+    {% if request.resolver_match.view_name != 'search' %}
+        $(".se-fi").show()
+        {% endif %}
+        $.ajax({
+            url: '{% url 'ajaxsearch' %}',
+            data: {
+                'q': q.value,
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+            },
+            dataType:'json',
+            type: 'post',
+            success: function(res){
+                {% if request.resolver_match.view_name != 'search' %}
+                $(".se-fi").html(res.data);
+                     if (q.value == ''){
+                         $(".se-fi").html('<ul class="list")"><li style="float: left;">No serch found</li></ul>');
+                         $(".se-fi").hide()
+                     }
+                     {% endif %}
+            }
+
+        })
+     })
+
+
+});
+
+function displayNames(value) {
+let inpu = document.querySelector('.input')
+  inpu.value = value;
+  window.location.href = '/search?q='+value
+  $(".se-fi").hide()
+}
+
+
+
+
+ jQuery(document).ready(function() {
+          jQuery('input').each( function() {
+
+               // Add your read only attribute and remove it onClick/focus
+                 jQuery(this).attr('readonly', 'true').attr('onClick', "this.removeAttribute('readonly');");
+
+               // Reintroduce the readonly attribute on mouseleave
+                 jQuery(this).on('mouseleave', function() {
+                      jQuery(this).attr('readonly', 'true')
+                 });
+          });
+  });
+
+
+
+
+
+
+    $(document).ready(function (){
+        var loader = document.querySelector("#preloader")
+        loader.style.display = 'none'
+        loader.remove()
+    })
+
+
+
+
+</script>
+{% endcompress %}
+
+
+</body>
+
+
+</html>
+

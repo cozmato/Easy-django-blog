@@ -1,0 +1,201 @@
+body{
+    background-color: black;
+    color: white;
+}
+.container{
+    background-color: black;
+    color: white;
+}
+.container-fluid{
+    background-color: black;
+    color: white;
+}
+a, form, small, i, strong, bi, p{
+    color: white;
+}
+
+.card{
+    background-color: black;
+    color: white;
+}
+.card > a{
+    text-decoration: none;
+    color: white;
+}
+
+
+.co2{
+    background-color: black;
+    color: white;
+}
+.co2 > a{
+    text-decoration: none;
+    color: white;
+}
+.bt{
+    border: 0;
+    outline: 0;
+    background-color: inherit;
+    color: inherit;
+}
+.bt:focus{
+    border: 0px;
+    outline: 0px;
+
+}
+ video{
+     object-fit: fill;
+ }
+ .badge {
+  padding: 5px;
+  text-align: center;
+  border-radius: 2em;
+  background: red;
+  color: white;
+  width: auto;
+  height: 1.6em;
+  max-width: 5em;
+  position: absolute;
+  margin-left: 1.2em;
+  margin-top: 3px;
+}
+
+    a{
+        text-decoration: none;
+        color: white;
+     }
+    .header a{
+        display: flex;
+         float: left;
+         margin: 0 auto;
+         padding: 8px 8px;
+         font-size:14px;
+         text-align: center;
+         color: white;
+    }
+       .header form{
+        display: flex;
+         text-decoration: none;
+         float: left;
+         color: white;
+         font-size:14px;
+         text-align: center;
+         padding-left: ;
+         padding: 8px 8px 0px 10%;
+    }
+    .header{
+        position: -webkit-sticky;
+        position: sticky;
+        overflow: hidden;
+        background-color: #aaa;
+        width: 100%;
+        top: 0px;
+    }
+
+    		.type_msg{
+			border:0;
+			border-radius: 5em;
+			color:rgba(0,0,2,3.3) !important;
+			background-color: white !important;
+			height: 30px;
+			overflow-x: auto;
+		}
+			.type_msg:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+           background-color: #eee !important;
+		}
+		.attach_btn{
+	border-radius: 15px 0 0 15px !important;
+	background-color: white !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+		.send_btn{
+	border-radius: 0 50px 50px 0 !important;
+	background-color: white !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+			height: 30px;
+		}
+
+
+      .attach_btn{
+     width: 30px;
+     height: 30px;
+     border-radius: 5em;
+ }
+ .cu{
+     cursor: pointer;
+ }
+ #send{
+     display: none;
+ }
+
+ @media (max-width: 690px){
+
+        .type_msg{
+			border:0;
+			border-radius: 5em;
+			color:rgba(0,0,2,3.3) !important;
+			background-color: #eee !important;
+			height: 30px;
+			overflow-x: auto;
+		}
+			.type_msg:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+           background-color: #eee !important;
+		}
+
+    .header{
+        position: -webkit-sticky;
+        position: sticky;
+        overflow: hidden;
+        border-bottom: 1px solid grey;
+        background-color: black;
+        color: white;
+        width: 100%;
+        top: 0px;
+    }
+
+    .header a{
+        display: flex;
+         float: left;
+         margin: 0 auto;
+         padding: 8px 8px;
+         font-size:14px;
+         text-align: center;
+         color: white;
+    }
+
+    .header form{
+        width: 100%;
+        display: block;
+         text-decoration: none;
+         margin: 0 auto;
+         padding: 8px 10px;
+         font-size:14px;
+         text-align: center;
+        color: grey;
+    }
+
+    #mmm{
+        display: flex;
+         justify-content: space-around;
+         padding: 8px 8px;
+         color: white;
+    }
+
+    .bi{
+     color: }white;
+
+    }
+
+ .act{
+     color: green;
+ }
+
+ }

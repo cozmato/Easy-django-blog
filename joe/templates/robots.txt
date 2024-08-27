@@ -1,0 +1,17 @@
+User-Agent: *
+
+Disallow: /directory/
+Disallow: /profile
+Disallow: /post
+Disallow: /sdjem
+Disallow: /direct
+Disallow: /login
+Disallow: /logout
+Disallow: /register
+Disallow: /like
+Disallow: /conf
+Disallow: /notification
+Disallow: /shop
+Disallow: /ajaxpost
+
+Sitemap: https://cozmato.com/sitemap.xml

@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% load static %}
+{% load humanize %}
+{% load compress %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+ 
+ {% compress css inline %}
+
+<style>
+a, form, small, i{
+    color: rgb(40,40,40);
+
+}
+
+.co > a{
+    text-decoration: none;
+    color: rgb(40,40,40);
+}
+
+a:hover{
+    text-decoration: none;
+    color: rgb(40,40,40);
+}
+
+a{
+    text-decoration: none;
+    color: rgb(40,40,40);
+}
+
+
+
+
+.cati{
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ flex-direction: row;
+ gap: 5px;
+ border-radius: 10px;
+ width: auto;
+ max-width: 100%;
+ height: auto;
+ max-height: 150px;
+ overflow-x: auto;
+ overflow-y: hidden;
+ padding: 10px;
+color: rgb(40,40,40);
+background-color: #eee;
+    
+}
+ .cat{height: 150px; width: 100px; padding: 8px; border-radius: 10px;}
+
+.cat > small()
+
+
+
+.cat-img{width: 95%; border-radius: 10px; height: 70%;}
+
+.ro{
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    gap: 14px;
+}
+
+.co{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 14px;
+}
+
+
+
+.car{width: 100%; height: auto;}
+
+.loading{
+    display: none;
+}
+
+
+.container-fluid{
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 10px;
+    background-color: #ffffff;
+    color: rgb(40,40,40);
+
+}
+
+.c-i{width: 50px; height: 50px; border-radius: 100%; margin-right: 5px;}
+
+.poimg{
+    width: 100%;
+    height: 200;
+}
+ 
+.ads{
+    padding: 10px;
+    position: sticky;
+    top: 30px;
+    bottom: 20px;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    overflow-y: auto;
+
+}
+
+
+.cati{
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ flex-direction: row;
+ gap: 5px;
+ border-radius: 10px;
+ width: auto;
+ max-width: 100%;
+ height: auto;
+ max-height: 150px;
+ overflow-x: auto;
+ overflow-y: hidden;
+ padding: 10px;
+ }
+
+.cat{height: 150px; width: 100px; padding: 8px; border-radius: 10px;}
+
+.cat-img{width: 95%; border-radius: 10px; height: 70%;}
+
+.card{
+  margin: 5% 0%;
+}
+
+.card-body{
+  margin: 0% 0% 0% 3%;
+  padding: 6% 0%;
+}
+
+@media (max-width: 600px) {
+    .container-fluid{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body{
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        background-color: #ffffff;
+        color: rgb(40,40,40);
+    }
+
+
+    .co1{}
+    .ro{
+        display: grid;
+        grid-template-columns: 100%;
+        margin: 0px;
+        width: 100%;
+    }
+
+    .co{
+        display: grid;
+        grid-template-columns: 100%;
+        margin: 0px;
+        background-color: #ffffff;
+        color: rgb(40,40,40);
+    }
+    
+    .poimg{
+        width: 100%;
+        height: auto;
+        max-height: 450px;
+        object-fit: fill;
+    }
+}
+
+</style>
+ {% endcompress %}
+
+
+
+<div class="container-fluid">
+        <div class="ro">
+            
+            <div class="co1"> 
+
+            </div> 
+            
+            <div class="co2">
+                
+                    <div class="cati mb-4" style="">
+
+                    {% for c in category %}
+                     {% if c is not None  %}
+                    <span class="mr-2 mt-3 cat">
+                        <a href="{% url 'category' name=c.name|unes_ht|slugify id=c.id %}" style="" class="">
+                        <img style="width: 100px; border-radius: 10px; height: 80%;" class="cat-img" src="{{ c.image.url }}" alt="{{ c.name }}">
+                        <small style="">{{ c.name|capfirst | truncatechars:11 }}</small>
+                        </a>
+                    </span>
+                    {% endif %}
+                    {% endfor %} 
+
+                </div>
+
+                <div class="co infinite-container" >
+            {% for p in users_pag %}
+    
+                <div class="card infinite-item mt-2 " style="">
+                    <a href="{% url 'post-detail' pk=p.pk name=p.name|unes_ht|slugify %}" class="">
+                      <img class="card-img-top img-fluid poimg" loading="lazy" src="{{ p.file.url }}" alt="{{ p.name }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ p.name | unes_ht }} </h5>
+                        <p class="card-text"> {{ p.meta_description }} </p>
+                        <br>
+                        <a href="{% url 'post-detail' pk=p.pk name=p.name|unes_ht|slugify %}" class="btn btn-sm btn-primary text-white">Read more...</a>
+                      </div>
+                </a>
+    
+            </div>
+    
+    
+            {% endfor %}
+                            </div>
+
+                <div class="ta-c">
+                  {% if users_pag.has_next %}
+                    <a class="infinite-more-link" href="?page={{ users_pag.next_page_number }}">More</a>
+                  {% endif %}
+                  
+
+                    <div class="loading" style="">
+                    Loading...
+                  </div>
+    
+                </div>
+                  
+
+
+            </div>
+            
+            <div class="co3"></div>
+            
+        </div>
+    </div>
+    
+
+
+    
+    <script src="{% static 'js/jquery.waypoints.min.js' %}" ></script>
+<script src="{% static 'js/infinite.min.js' %}" ></script>
+<script src="{% static 'js/jwpi.js' %}" ></script>
+
+
+
+{% endblock %}

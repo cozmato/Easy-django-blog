@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>404</title>
+</head>
+
+{% block content %}
+
+<style>
+
+html,
+body {
+  height: 100%;
+}
+body {
+    font-family:"Nunito Sans";
+    font-size: 1em;
+    background-color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(40,40,40){% else %}rgb(249,249,249){% endif %}{% else %}rgb(249,249,249){% endif %};
+    color: {% if user.is_authenticated %}{% if request.user.profile.dark_mode == True %}rgb(249,249,249){% else %}rgb(40,40,40){% endif %}{% else %}rgb(40,40,40){% endif %};
+
+}
+
+h1 {
+  font-size: 7.5em;
+  margin: 15px 0px;
+  font-weight:bolder;
+}
+h2 {
+  font-weight:bold;
+}
+h3{
+font-size: 20px;
+}
+
+</style>
+
+<body>
+
+        <center>
+
+        <div style="">
+        <h1>404</h1>
+        <h2>Page not found.</h2>
+        <h3>This page does not exist or it has been deleted
+        </h3>
+
+      </div>
+
+        </center>
+
+</body>
+
+{% endblock %}

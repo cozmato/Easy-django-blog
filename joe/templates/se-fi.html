@@ -1,0 +1,19 @@
+{% for u in us %}
+<ul style="border-bottom: 2px solid gray;" class="list" onclick="displayNames('{{ u.username }}')">
+
+    <li style="float: left; cursor: pointer;" class="ta-l">{{ u.username }}</li>
+</ul> 
+{% endfor %}
+
+{% for s in se %}
+<ul style="border-bottom: 2px solid gray;" class="list" onclick="displayNames('{{ s.name }}')">
+    <li style="float: left; cursor: pointer;" class="ta-l">{{ s.name }}</li>
+    </ul>
+{% endfor %}
+
+{% for h in sh %}
+<ul style="border-bottom: 2px solid gray;" class="list" onclick="displayNames('{{ h.page_name }}')">
+<li style="float: left; cursor: pointer;" class="ta-l">{{ h.page_name }}</li>
+</ul>
+{% endfor %}
+

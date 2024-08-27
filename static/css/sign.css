@@ -1,0 +1,124 @@
+
+
+a{
+    text-decoration: none;
+}
+
+body, html{
+	font-family: 'Varela Round', sans-serif;
+	width: 100%;
+    height: 100%;
+}
+
+.ro{
+    display: grid;
+    grid-template-columns: 50% 50%;
+	width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    padding: 20px;
+}
+
+.loimg{
+    height: 100; width: 100; border-radius: 10em;
+}
+
+img{
+width: 100%;
+height: 100%;
+}
+
+.container-fluid{
+    margin: 0 auto;
+}
+
+    .help-block{
+        color: red;
+        font-size: small;
+        font-weight: small;
+    }
+    li{
+        color: green;
+        font-size: small;
+        font-weight: smaller;
+          display: none;
+
+    }
+    ul {
+  list-style-type: none;
+  margin: 5px;
+  padding: 0;
+  display: none;
+
+}
+#hint_id_password2{
+        color: green;
+        font-size: small;
+        font-weight: smaller;
+        display: none;
+}
+
+body, html{
+	font-family: 'Varela Round', sans-serif;
+	width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+.ro{
+    display: grid;
+    grid-template-columns: 50% 50%;
+	width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    padding: 20px;
+}
+.co1{
+width: 100%;
+height: 100%;
+}
+.co2{
+width: 100%;
+height: 100%;
+}
+img{
+width: 100%;
+height: 100%;
+}
+
+@media (max-width: 600px){
+    .co2{
+width: 100%;
+height: 100%;
+}
+    body, html{
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .container-fluid{
+        padding:  0px;
+        margin:  0px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .ro{
+    display: grid;
+    grid-template-columns: 100%;
+            width: 100%;
+        height: 100%;
+}
+.co1{display: none;}
+.co3{display: none;}
+#reg{
+align-items: center;
+justify-content: center;
+}
+
+#log{
+align-items: center;
+justify-content: center;
+}
+
+}

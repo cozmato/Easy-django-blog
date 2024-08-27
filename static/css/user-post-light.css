@@ -1,0 +1,219 @@
+.loading{
+    display: none;
+}
+.emp{
+    color: green; text-align: center;
+}
+.upos{
+    text-font: bold;
+}
+.aff{
+    float: right; margin-right: 4px; margin-left: 4px;
+}
+.upimg{
+    width: 100%; height: 280px; max-height: 350px;
+}
+.oul{
+    outline: 0px;
+}
+.foll{
+    display: flex; flex-direction: row; gap: .8em;
+}
+.hfo{
+    margin-top: -45px;
+}
+.phi{
+    height: 100px; width: 100px; border-radius: 5em; border: green 2px solid;
+                          transform: translateY(-30%);
+}
+.riphi{
+    height: 150px; width: 100%; border-radius: .5em; border: green 2px solid;
+}
+
+a, form, small, i{
+    color: black;
+}
+#follow{
+    background: purple;
+    color: white;
+}
+
+.car > a{
+    text-decoration: none;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body {
+        background-color: rgb(249,249,249);
+    color: rgb(40,40,40);
+
+}
+.container-fluid{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
+}
+.ro{
+
+}
+
+
+.eve{
+    display: flex;
+    gap: 10px;
+}
+
+.cen{
+    height: 100%;
+    width: 100%;
+    padding: 60px;
+}
+.car{
+    background-color: rgb(238, 238, 238);
+    color: white;
+    border: grey 1px solid;
+    padding: 10px;
+}
+.status{
+    background: blue;
+    height: 25px;
+    width: 25px;
+    border: 2px solid inherit;
+    border-radius: 1em;
+    transform: translate(100%, -200%);
+}
+.sta{
+    height: 25px;
+    width: 25px;
+    transform: translate(90%, -100%);
+}
+.follow{
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: large;
+}
+.icon{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 15px;
+}
+.bt{
+    background-color: rgb(249,249,249);
+    color: rgb(40,40,40);
+    border-radius: 2em;
+    width: 100px;
+    height: 40px;
+    padding: 6px;
+    font-size: large;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.b{
+    border-radius: 2em;
+    width: 100px;
+    height: 40px;
+    padding: 6px;
+    font-size: large;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.about{
+    margin: 5px;
+    font-family: cursive;
+    font-size: large;
+
+}
+.bio{
+
+}
+h3:not(b){
+    font-size: larger;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: lighter;
+}
+h3:not(b){
+    font-size: larger;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+
+.co2{
+    display: grid;
+    grid-template-rows: 100%;
+    grid-gap: 5px;
+}
+.co{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin-bottom: 3em;
+    gap: 10px;
+}
+.footer{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 4px;
+}
+
+html body{
+    background: rgb(250, 250, 250);
+    height: 100%
+}
+
+@media (max-width: 600px){
+.footer{
+background: rgb(250, 250, 250);
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 3px;
+margin-top: 5px;
+height: 100%;
+width: 100%;
+}
+
+.ro{
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.co2{
+    display: grid;
+    grid-template-rows: 90% 10%;
+    grid-gap: 5px;
+}
+.co{
+    display: grid;
+    grid-template-columns: 100%;
+    margin-bottom: 3.6em;
+    grid-gap: 5px;
+}
+
+.container-fluid{
+    display: grid;
+    grid-template-columns: 100%;
+    padding: 0px;
+    margin: 0px;
+    gap: 10px;
+}
+
+html body{
+    background: rgb(250, 250, 250);
+    height: 100%
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(249,249,249);
+    color: rgb(40,40,40);
+}
+}
